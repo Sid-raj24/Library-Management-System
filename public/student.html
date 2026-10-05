@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .card { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 5px; }
+    .nav { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    .stats-container {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .stat-box {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 6px;
+      padding: 15px 20px;
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      color: #6c757d;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-box.warning .stat-number {
+      color: #dc3545;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <h1 id="welcome">Student Dashboard</h1>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div class="card">
+    <h2>My Account Stats</h2>
+    <div id="student-stats"></div>
+  </div>
+
+  <div class="card">
+    <h2>My Borrowed Books</h2>
+    <ul id="my-history"></ul>
+  </div>
+
+  <script src="student.js"></script>
+</body>
+</html>

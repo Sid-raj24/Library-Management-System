@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2rem; }
+    .card { border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 5px; }
+    .nav { display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px; }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .stat-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+    }
+
+    .stat-value {
+      display: block;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #2563eb;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .stat-card.warning .stat-value {
+      color: #dc2626;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <h1 id="welcome">Admin Portal</h1>
+    <button onclick="logout()">Logout</button>
+  </div>
+
+  <div class="card">
+    <h2>System Overview</h2>
+    <div id="admin-stats" class="stats-grid"></div>
+  </div>
+
+  <div class="card">
+    <h2>Issue Book to Student</h2>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <input type="email" id="issue-student-email" placeholder="Student Registered Email">
+      
+      <!-- MUST HAVE list="available-books-list" -->
+      <input type="text" id="issue-book-title" list="available-books-list" placeholder="Type or select Book Title">
+      <datalist id="available-books-list"></datalist>
+
+      <button onclick="submitIssueBook()">Issue Book</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Process Book Return</h2>
+    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+      <input type="text" id="search-student-input" placeholder="Enter Student Name or Email">
+      <button onclick="searchStudentIssues()">Search Student</button>
+    </div>
+
+    <div id="student-issues-results"></div>
+  </div>
+
+  <div class="card">
+    <h2>Add New Book</h2>
+    <form id="add-book-form" onsubmit="addBook(event)">
+      <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+        <input type="text" id="book-title" placeholder="Book Title" required>
+        <input type="text" id="book-author" placeholder="Author" required>
+        <input type="text" id="book-isbn" placeholder="ISBN" required>
+        <input type="number" id="book-copies" placeholder="Total Copies" min="1" required>
+        <input type="text" id="book-genre" placeholder="Genre (e.g. Sci-Fi, Fiction)">
+        <button type="submit">Add Book</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h2>Book Management</h2>
+    <div id="books-list" ></div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
